@@ -1,0 +1,47 @@
+<div>
+    <span>Assay Barcode</span><br>
+    <input placeholder="Assay Barcode" [(ngModel)]="plate.assayBarcode">
+</div>
+
+<div>
+    <span>Inventory Barcode</span><br>
+    <input placeholder="Inventory Barcode" [(ngModel)]="plate.inventoryBarcode">
+</div>
+
+<div>
+    <input type="checkbox" [(ngModel)]="autoFillSelected">Auto Fill<br>
+    <input *ngIf="autoFillSelected" placeholder="number of plates">
+</div>
+
+<div>
+    <label>Chip Layout</label>
+    <label>----(suggestion from plate name {{layoutSuggestion}})</label><br>
+    <select>
+        <option *ngFor="let chipLayout of chipLayouts">{{chipLayout.trim()}}</option>
+    </select>
+</div>
+
+<div>
+    <label>Plate Name</label>
+    <select>
+        <option  *ngFor="let plateName of plateNames">{{plateName}}</option>
+    </select>
+</div>
+
+<div>
+    <label>Plate Type</label>
+    <select>
+        <option *ngFor="let plateType of plateTypes">{{plateType}}</option>
+    </select>
+</div>
+
+<div>
+    <label>Wafer ID</label>
+    <label>----(from the lastest record {{waferLatestRecord}})</label><br>
+    <input placeholder="wafer ID">
+</div>
+
+<button (click)="click()">Insert Plate Info</button>
+<button>Refresh options</button>
+
+
