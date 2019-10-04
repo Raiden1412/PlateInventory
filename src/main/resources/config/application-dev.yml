@@ -37,28 +37,25 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:file:./target/h2db/db/plateinventory;DB_CLOSE_DELAY=-1
-    username: PlateInventory
-    password:
+    url: jdbc:mysql://localhost:3306/vibrant_test_tracking?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: Caivibrant1412
     hikari:
       poolName: Hikari
       auto-commit: false
-  h2:
-    console:
-      enabled: false
+
   jpa:
-    database-platform: io.github.jhipster.domain.util.FixedH2Dialect
-    database: H2
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: MYSQL
     show-sql: true
     properties:
       hibernate.id.new_generator_mappings: true
-      hibernate.connection.provider_disables_autocommit: true
-      hibernate.cache.use_second_level_cache: true
+      hibernate.cache.use_second_level_cache: false
       hibernate.cache.use_query_cache: false
-      hibernate.generate_statistics: false
+      hibernate.generate_statistics: true
   liquibase:
     # Remove 'faker' if you do not want the sample data to be loaded automatically
-    contexts: dev, faker
+    contexts: dev
   mail:
     host: localhost
     port: 25
@@ -68,7 +65,12 @@ spring:
     cache-duration: PT1S # 1 second, see the ISO 8601 standard
   thymeleaf:
     cache: false
-
+  zipkin: # Use the "zipkin" Maven profile to have the Spring Cloud Zipkin dependencies
+    base-url: http://localhost:9411
+    enabled: false
+    locator:
+      discovery:
+        enabled: true
 server:
   port: 8080
 

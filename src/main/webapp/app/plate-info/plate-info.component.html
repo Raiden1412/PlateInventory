@@ -16,21 +16,21 @@
 <div>
     <label>Chip Layout</label>
     <label>----(suggestion from plate name {{layoutSuggestion}})</label><br>
-    <select>
-        <option *ngFor="let chipLayout of chipLayouts">{{chipLayout.trim()}}</option>
+    <select [(ngModel)]="plate.chipLayout">
+        <option *ngFor="let chipLayout of chipLayouts" >{{chipLayout}}</option>
     </select>
 </div>
 
 <div>
     <label>Plate Name</label>
-    <select>
+    <select [(ngModel)]="plate.plateName">
         <option  *ngFor="let plateName of plateNames">{{plateName}}</option>
     </select>
 </div>
 
 <div>
     <label>Plate Type</label>
-    <select>
+    <select [(ngModel)]="plate.plateType">
         <option *ngFor="let plateType of plateTypes">{{plateType}}</option>
     </select>
 </div>
@@ -38,10 +38,10 @@
 <div>
     <label>Wafer ID</label>
     <label>----(from the lastest record {{waferLatestRecord}})</label><br>
-    <input placeholder="wafer ID">
+    <input placeholder="wafer ID" [(ngModel)]="plate.waferId">
 </div>
 
-<button (click)="click()">Insert Plate Info</button>
+<button (click)="insert()">Insert Plate Info</button>
 <button>Refresh options</button>
 
 
